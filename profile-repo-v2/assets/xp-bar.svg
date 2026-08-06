@@ -1,0 +1,35 @@
+<svg width="1200" height="70" viewBox="0 0 1200 70" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fillGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffe1"/>
+      <stop offset="50%" stop-color="#7928ca"/>
+      <stop offset="100%" stop-color="#ff0080"/>
+    </linearGradient>
+    <filter id="barGlow">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="20" y="24" width="1160" height="24" rx="12" fill="#0f0c29" stroke="#ffffff22" stroke-width="1"/>
+
+  <clipPath id="barClip">
+    <rect x="24" y="28" width="1152" height="16" rx="8"/>
+  </clipPath>
+
+  <g clip-path="url(#barClip)" filter="url(#barGlow)">
+    <rect x="24" y="28" width="1152" height="16" fill="url(#fillGrad)">
+      <animate attributeName="width" values="0;1152;1152" keyTimes="0;0.6;1" dur="3s" fill="freeze"/>
+    </rect>
+    <rect x="0" y="28" width="80" height="16" fill="#ffffff55">
+      <animate attributeName="x" values="-80;1200" dur="2.5s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <text x="600" y="63" text-anchor="middle" font-family="Courier New, monospace" font-size="14" fill="#e6e6e6" letter-spacing="3">
+    ACTIVE // COMMITTING // SHIPPING
+  </text>
+</svg>
