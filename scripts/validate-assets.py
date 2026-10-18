@@ -122,7 +122,8 @@ def check_privacy_and_identity():
         "assets/autumn-divider.svg",
         "assets/autumn-footer.svg",
         "assets/autumn-leaf.svg",
-        "assets/profile/contribution-snake-autumn.svg"
+        "assets/profile/contribution-snake-autumn.svg",
+        "assets/profile/activity-graph-autumn.svg"
     ]
     for rel_svg in active_svgs:
         p = REPO_ROOT / rel_svg
