@@ -1,0 +1,103 @@
+<svg width="100%" height="auto" viewBox="0 0 1200 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="footerBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#140F0B"/>
+      <stop offset="40%" stop-color="#231D16"/>
+      <stop offset="80%" stop-color="#2D1C13"/>
+      <stop offset="100%" stop-color="#1A1510"/>
+    </linearGradient>
+
+    <linearGradient id="footerGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FEED9F"/>
+      <stop offset="50%" stop-color="#F7D327"/>
+      <stop offset="100%" stop-color="#D0A823"/>
+    </linearGradient>
+
+    <linearGradient id="footerLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D0A823" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#D0A823" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#F7D327" stop-opacity="0.9"/>
+      <stop offset="75%" stop-color="#EB7134" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#EB7134" stop-opacity="0"/>
+    </linearGradient>
+
+    <clipPath id="footerClip">
+      <rect x="0" y="0" width="1200" height="180" rx="16" ry="16"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#footerClip)">
+    <!-- Background -->
+    <rect width="1200" height="180" fill="url(#footerBg)"/>
+
+    <!-- Subtle Forest Skyline Silhouette (Inverted Depth) -->
+    <g fill="#140F0B" opacity="0.6">
+      <polygon points="50,180 70,120 90,180"/>
+      <polygon points="120,180 145,105 170,180"/>
+      <polygon points="210,180 230,125 250,180"/>
+      <polygon points="320,180 340,110 360,180"/>
+      <polygon points="840,180 860,115 880,180"/>
+      <polygon points="950,180 975,100 1000,180"/>
+      <polygon points="1060,180 1080,120 1100,180"/>
+      <polygon points="1130,180 1150,130 1170,180"/>
+    </g>
+
+    <!-- Forest Floor Rolling Hills -->
+    <path d="M-20,135 Q220,105 500,128 T1020,115 T1220,130 L1220,180 L-20,180 Z" fill="#18130E" opacity="0.85"/>
+    <path d="M-20,150 Q300,130 700,145 T1220,140 L1220,180 L-20,180 Z" fill="#0F0C08"/>
+
+    <!-- Top Accent Line -->
+    <line x1="100" y1="2" x2="1100" y2="2" stroke="url(#footerLine)" stroke-width="1.5"/>
+
+    <!-- Resting Leaves on Forest Floor -->
+    <!-- Left Leaf -->
+    <g transform="translate(180, 148) rotate(-15) scale(0.8)" fill="#D0A823" opacity="0.8">
+      <path d="M0,-12 C5,-6 6,6 0,12 C-6,6 -5,-6 0,-12 Z"/>
+    </g>
+    <!-- Right Leaf -->
+    <g transform="translate(1020, 142) rotate(25) scale(0.85)" fill="#EB7134" opacity="0.85">
+      <path d="M0,-14 C7,-8 7,6 0,14 C-7,6 -7,-8 0,-14 Z"/>
+    </g>
+
+    <!-- Floating Embers / Fireflies -->
+    <circle cx="280" cy="65" r="1.5" fill="#FEED9F">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="40" r="1.8" fill="#F7D327">
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="750" cy="50" r="1.6" fill="#F0B562">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="920" cy="70" r="1.5" fill="#FEED9F">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Center Botanical Embellishment -->
+    <g transform="translate(600, 42)">
+      <circle cx="0" cy="0" r="16" fill="#2D1C13" stroke="#D0A823" stroke-width="1"/>
+      <path d="M0,-8 C3,-4 4,4 0,8 C-4,4 -3,-4 0,-8 Z" fill="#F7D327"/>
+      <line x1="-35" y1="0" x2="-20" y2="0" stroke="#D0A823" stroke-width="1.2"/>
+      <line x1="20" y1="0" x2="35" y2="0" stroke="#D0A823" stroke-width="1.2"/>
+    </g>
+
+    <!-- Footer Text -->
+    <text x="600" y="85" text-anchor="middle"
+          font-family="Georgia, Cambria, 'Times New Roman', serif" font-style="italic"
+          font-size="16" fill="#FEED9F" letter-spacing="0.5">
+      &#8220;Crafted with warmth, architectural discipline, and quiet persistence.&#8221;
+    </text>
+
+    <text x="600" y="112" text-anchor="middle"
+          font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"
+          font-size="12" font-weight="600" fill="#F0B562" letter-spacing="2">
+      AFNAN PATHAN &#10022; AUTUMN PROFILE ENVIRONMENT &#10022; 2026
+    </text>
+
+    <!-- Outer Border -->
+    <rect x="2" y="2" width="1196" height="176" rx="14" ry="14"
+          fill="none" stroke="#504C41" stroke-width="1"/>
+    <rect x="4" y="4" width="1192" height="172" rx="12" ry="12"
+          fill="none" stroke="#D0A823" stroke-width="0.5" stroke-opacity="0.4"/>
+  </g>
+</svg>

@@ -1,0 +1,116 @@
+<svg width="100%" height="auto" viewBox="0 0 860 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Terminal Background Gradient -->
+    <linearGradient id="termBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18130E"/>
+      <stop offset="50%" stop-color="#231D16"/>
+      <stop offset="100%" stop-color="#140F0B"/>
+    </linearGradient>
+
+    <!-- Header Gradient -->
+    <linearGradient id="termHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2D1C13"/>
+      <stop offset="100%" stop-color="#40271D"/>
+    </linearGradient>
+
+    <clipPath id="termClip">
+      <rect x="0" y="0" width="860" height="320" rx="14" ry="14"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#termClip)">
+    <!-- Terminal Frame Background -->
+    <rect width="860" height="320" fill="url(#termBg)"/>
+
+    <!-- Terminal Header Bar -->
+    <rect width="860" height="42" fill="url(#termHeader)"/>
+    <line x1="0" y1="42" x2="860" y2="42" stroke="#504C41" stroke-width="1"/>
+
+    <!-- Window Controls (Autumn Themed) -->
+    <circle cx="28" cy="21" r="6.5" fill="#A83A0A"/>
+    <circle cx="48" cy="21" r="6.5" fill="#EBAA32"/>
+    <circle cx="68" cy="21" r="6.5" fill="#9A7807"/>
+
+    <!-- Terminal Title -->
+    <g transform="translate(430, 26)">
+      <text text-anchor="middle"
+            font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"
+            font-size="12" font-weight="600" fill="#FEED9F" letter-spacing="1">
+        🍁 afnan@autumn-node // cs-environment [zsh]
+      </text>
+    </g>
+
+    <!-- Right Header Indicator -->
+    <text x="835" y="26" text-anchor="end"
+          font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"
+          font-size="11" fill="#9B704B">
+      UTC+05:30
+    </text>
+
+    <!-- Terminal Content Area -->
+    <g transform="translate(32, 75)" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13.5">
+      <!-- Line 1: Command -->
+      <g>
+        <text x="0" y="0" fill="#D0A823" font-weight="bold">$</text>
+        <text x="18" y="0" fill="#FEED9F">cat</text>
+        <text x="56" y="0" fill="#F7D327">/etc/cs-domains.conf</text>
+      </g>
+
+      <!-- Line 2: Domain 1 -->
+      <g opacity="0.95">
+        <text x="0" y="32" fill="#D0A823">&#10004;</text>
+        <text x="22" y="32" fill="#F0B562">[01_CLOUD_INFRASTRUCTURE]</text>
+        <text x="245" y="32" fill="#FBFBF5">AWS · Virtualization · Infrastructure as Code · Linux</text>
+      </g>
+
+      <!-- Line 3: Domain 2 -->
+      <g opacity="0.95">
+        <text x="0" y="64" fill="#D0A823">&#10004;</text>
+        <text x="22" y="64" fill="#F0B562">[02_DEVOPS_AUTOMATION]</text>
+        <text x="245" y="64" fill="#FBFBF5">CI/CD Automation · Docker · Kubernetes · Systems Tooling</text>
+      </g>
+
+      <!-- Line 4: Domain 3 -->
+      <g opacity="0.95">
+        <text x="0" y="96" fill="#D0A823">&#10004;</text>
+        <text x="22" y="96" fill="#F0B562">[03_SITE_RELIABILITY]</text>
+        <text x="245" y="96" fill="#FBFBF5">Observability · Prometheus Metrics · Grafana Telemetry</text>
+      </g>
+
+      <!-- Line 5: Domain 4 -->
+      <g opacity="0.95">
+        <text x="0" y="128" fill="#D0A823">&#10004;</text>
+        <text x="22" y="128" fill="#F0B562">[04_DISTRIBUTED_SYSTEMS]</text>
+        <text x="245" y="128" fill="#FBFBF5">Backend Architecture · Networking Protocols · Databases</text>
+      </g>
+
+      <!-- Line 6: Echo Statement Banner -->
+      <g transform="translate(0, 160)">
+        <rect x="0" y="-12" width="796" height="28" rx="6" fill="#2D1C13" stroke="#D0A823" stroke-width="0.8" stroke-opacity="0.6"/>
+        <text x="14" y="6" fill="#F7D327" font-weight="bold">&#10022;</text>
+        <text x="32" y="6" fill="#FEED9F">Focus: Exploring computer science through systems, infrastructure, and software.</text>
+      </g>
+
+      <!-- Line 7: Active Prompt with Blinking Cursor -->
+      <g transform="translate(0, 208)">
+        <text x="0" y="0" fill="#EB7134" font-weight="bold">&#10148;</text>
+        <text x="18" y="0" fill="#D0A823">autumn-node</text>
+        <text x="135" y="0" fill="#9B704B">git:(</text>
+        <text x="175" y="0" fill="#F7D327">main</text>
+        <text x="207" y="0" fill="#9B704B">)</text>
+        <text x="222" y="0" fill="#D0A823">$</text>
+
+        <!-- Blinking Terminal Cursor -->
+        <rect x="238" y="-13" width="9" height="17" fill="#F7D327">
+          <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+    </g>
+
+    <!-- Outer Terminal Border -->
+    <rect x="1" y="1" width="858" height="318" rx="13" ry="13"
+          fill="none" stroke="#504C41" stroke-width="1.2"/>
+    <rect x="2" y="2" width="856" height="316" rx="12" ry="12"
+          fill="none" stroke="#D0A823" stroke-width="0.6" stroke-opacity="0.4"/>
+  </g>
+</svg>
