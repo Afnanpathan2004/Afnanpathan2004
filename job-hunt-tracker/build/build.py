@@ -17,10 +17,56 @@ from openpyxl.comments import Comment
 import jobs_data as JD_
 from ref_data import PROFILE, SM, RES, CO, JD
 
-OUT = sys.argv[1] if len(sys.argv) > 1 else "Job_Hunt_Tracker.xlsx"
-TODAY = dt.date(2026, 11, 10)
+import argparse, json
+_ap = argparse.ArgumentParser(description="Generate the job-hunt tracker workbook")
+_ap.add_argument("out", nargs="?", default="Job_Hunt_Tracker.xlsx")
+_ap.add_argument("--rows", help="JSON list of master-row dicts (from the pipeline). Default: seed research data")
+_ap.add_argument("--state", help="JSON of preserved user-entered cells for the other sheets")
+_ap.add_argument("--runs", help="JSON list of pipeline run log entries")
+ARGS = _ap.parse_args()
+OUT = ARGS.out
+TODAY = dt.date(2026, 11, 10)   # research date of the seed data; also the Daily Log start date (keep fixed)
 FONT = "Arial"
-CAP = 600                      # master table capacity rows
+DATE_KEYS = ("deadline", "posted", "disc", "verified", "applied", "fup", "offer")
+
+def _norm_visa(v):
+    for p, out in (("Yes", "Yes"), ("No", "No"), ("Not required", "Not required (India)"), ("N/A", "N/A (remote)")):
+        if v.startswith(p): return out
+    return "Unknown"
+def _norm_rel(v):
+    for p in ("Yes", "No", "N/A"):
+        if v.startswith(p): return p
+    return "Unknown"
+
+def seed_rows():
+    """Convert the researched seed listings (jobs_data.py) into master-row dicts."""
+    rows = []
+    for j in JD_.J:
+        notes = j["notes"]
+        if _norm_visa(j["visa"]) != j["visa"] and j["visa"] != "Unknown":
+            notes = (f"Visa detail: {j['visa']}. " + notes).strip()
+        if _norm_rel(j["reloc"]) != j["reloc"] and j["reloc"] != "Unknown":
+            notes = (f"Relocation detail: {j['reloc']}. " + notes).strip()
+        v = dict(j)
+        v.update(visa=_norm_visa(j["visa"]), reloc=_norm_rel(j["reloc"]), notes=notes, edu_ok="Unknown",
+                 disc=TODAY, verified=TODAY,
+                 deadline=dt.date.fromisoformat(j["deadline"]) if j["deadline"] else None,
+                 posted=dt.date.fromisoformat(j["posted"]) if j["posted"] else None,
+                 status="Job Closed" if j["lstatus"] == "Closed / Expired" else "Not Applied",
+                 cover="No", minexp=j["minexp"] if j["minexp"] != "" else None)
+        rows.append(v)
+    return rows
+
+def load_rows(path):
+    rows = json.load(open(path, encoding="utf-8"))
+    for r_ in rows:
+        for k in DATE_KEYS:
+            if isinstance(r_.get(k), str) and r_[k]:
+                r_[k] = dt.date.fromisoformat(r_[k][:10])
+    return rows
+
+ROWS = load_rows(ARGS.rows) if ARGS.rows else seed_rows()
+CAP = max(600, ((len(ROWS) + 200) // 100 + 1) * 100)   # master table capacity rows (always 200+ free)
 M0, M1 = 5, 4 + CAP            # master data rows
 NAVY, TEAL, GREY, LIGHT = "1F3864", "0E6E6E", "F2F2F2", "DDEBF7"
 
@@ -86,7 +132,7 @@ LISTS = {
     "Location Group": ["India", "Remote - India Eligible", "Remote - Restricted / Unclear", "Germany", "UAE", "Other International"],
     "Location Fit": [JD_.IN_OK, JD_.REM_OK, JD_.SPON, JD_.SPON_UNK, JD_.NOT_OK],
     "Data Confidence": ["High", "Medium", "Low"],
-    "Listing Status": ["Active (search-verified)", "Active (page verified)", "Possibly Closed", "Closed / Expired"],
+    "Listing Status": ["Active (API-verified)", "Active (search-verified)", "Active (page verified)", "Possibly Closed", "Closed / Expired"],
     "Yes/No/Unknown": ["Yes", "No", "Unknown"], "Yes/No": ["Yes", "No"],
     "Interview Round": ["Recruiter Screening", "Online Assessment", "Technical Round 1", "Technical Round 2",
                         "System Design", "Managerial", "HR", "Final Interview"],
@@ -183,36 +229,7 @@ SK = f"{P}$A${S0}:$A${S1}"; SKL = f"{P}$D${S0}:$D${S1}"
 
 # =====================================================================================  MASTER JOB TRACKER
 MT = "'Master Job Tracker'!"
-MC = [  # header, key, width, is_formula
- ("Job ID", "id", 10, False), ("Priority", "pri", 8, False), ("Job Title", "title", 38, False),
- ("Job Category", "cat", 22, False), ("Company", "company", 24, False), ("Company Website", "website", 24, False),
- ("Job Application URL", "url", 40, False), ("Job Source", "source", 22, False), ("Location", "location", 24, False),
- ("Country", "country", 13, False), ("Location Group", "locgroup", 20, False), ("Work Mode", "mode", 10, False),
- ("Experience Required", "exp", 22, False), ("Min Experience Yrs", "minexp", 10, False), ("Job Level", "level", 18, False),
- ("Employment Type", "emp", 14, False), ("Salary Range", "salary", 22, False), ("Currency", "cur", 9, False),
- ("Visa Sponsorship", "visa", 14, False), ("Relocation Assistance", "reloc", 12, False),
- ("Remote Eligibility for India", "remote_india", 18, False), ("Required Education", "edu", 24, False),
- ("Education Eligible", "edu_ok", 11, False), ("Required Skills", "req", 34, False), ("Preferred Skills", "pref", 24, False),
- ("Programming Languages", "langs", 18, False), ("Cloud Platforms", "clouds", 14, False),
- ("Tools and Technologies", "tools", 22, False), ("Certifications", "certs", 16, False),
- ("Experience Requirements", "expdetail", 40, False), ("Hard Eligibility Restrictions", "hard", 26, False),
- ("Location Work Auth Fit", "locfit", 26, False), ("Application Deadline", "deadline", 12, False),
- ("Date Posted", "posted", 12, False), ("Date Discovered", "disc", 12, False), ("Date Verified", "verified", 12, False),
- ("Data Confidence", "conf", 11, False), ("Listing Status", "lstatus", 18, False),
- ("Application Status", "status", 18, False), ("Date Applied", "applied", 12, False),
- ("Recruiter Name", "rname", 16, False), ("Recruiter LinkedIn", "rlink", 18, False),
- ("Interview Status", "istatus", 18, True), ("Next Interview Date", "nextint", 12, True),
- ("Follow-up Date", "fup", 12, False), ("Expected Salary", "expsal", 12, False), ("Resume Version", "resume", 12, False),
- ("Cover Letter", "cover", 9, False), ("Job Description", "jd", 44, False),
- ("Tech Skills Score", "s_tech", 9, True), ("Experience Score", "s_exp", 9, True), ("Education Score", "s_edu", 9, True),
- ("Location Score", "s_loc", 9, True), ("Preferred Skills Score", "s_pref", 9, True), ("Certification Score", "s_cert", 9, True),
- ("Match Percentage", "match", 10, True), ("Match Band", "band", 16, True), ("Missing Skills", "missing", 30, True),
- ("Requirement Types", "reqtype", 40, False), ("Active Flag", "active", 12, True), ("Duplicate Check", "dup", 14, True),
- ("Pipeline Stage", "stage", 14, True), ("Pipeline Key", "pkey", 12, True), ("First Interview Date", "firstint", 12, True),
- ("Offer Date", "offer", 12, False), ("Days to Interview", "d_int", 10, True), ("Days to Offer", "d_off", 10, True),
- ("Apply Score", "ascore", 9, True), ("Apply Rank", "arank", 8, True), ("Search Flag", "sflag", 8, True),
- ("Search Rank", "srank", 8, True), ("Notes", "notes", 44, False),
-]
+from schema import MC, SCHEMA_VERSION
 CL = {k: L(i) for i, (_, k, _, _) in enumerate(MC, 1)}
 HN = {k: h for h, k, _, _ in MC}
 NC = len(MC)
@@ -243,31 +260,22 @@ def todate(s): return dt.date.fromisoformat(s) if s else None
 
 known = {p[0].lower() for p in PROFILE}
 unknown_tokens = set()
-jobs = JD_.J
+jobs = ROWS
+INPUT_KEYS = [k for _, k, _, fm in MC if not fm]
 for idx in range(CAP):
     r = M0 + idx
     j = jobs[idx] if idx < len(jobs) else None
     if j:
-        notes = j["notes"]
-        if norm_visa(j["visa"]) != j["visa"] and j["visa"] not in ("Unknown",):
-            notes = (f"Visa detail: {j['visa']}. " + notes).strip()
-        if norm_rel(j["reloc"]) != j["reloc"] and j["reloc"] not in ("Unknown",):
-            notes = (f"Relocation detail: {j['reloc']}. " + notes).strip()
-        for tok in [t.strip() for t in (j["req"] + "," + j["pref"]).split(",") if t.strip()]:
+        for tok in [t.strip() for t in (str(j.get("req") or "") + "," + str(j.get("pref") or "")).split(",") if t.strip()]:
             if tok.lower() not in known: unknown_tokens.add(tok)
-        vals = dict(j)
-        vals.update(visa=norm_visa(j["visa"]), reloc=norm_rel(j["reloc"]), notes=notes, edu_ok="Unknown",
-                    disc=TODAY, verified=TODAY, deadline=todate(j["deadline"]), posted=todate(j["posted"]),
-                    status="Job Closed" if j["lstatus"] == "Closed / Expired" else "Not Applied",
-                    cover="No", resume="", minexp=j["minexp"] if j["minexp"] != "" else None)
-        for k in ("rname", "rlink", "applied", "fup", "expsal", "offer"): vals[k] = None
-        for h, k, _, fm in MC:
-            if not fm and k != "id":
-                v = vals.get(k)
-                mt[f"{CL[k]}{r}"] = v if v != "" else None
-        mt[f"A{r}"] = j["id"]
-        if j["url"]: mt[f"{CL['url']}{r}"].hyperlink = j["url"]; mt[f"{CL['url']}{r}"].font = f(color="0563C1")
-        if j["website"]: mt[f"{CL['website']}{r}"].hyperlink = j["website"]; mt[f"{CL['website']}{r}"].font = f(color="0563C1")
+        for k in INPUT_KEYS:
+            v = j.get(k)
+            mt[f"{CL[k]}{r}"] = None if v in ("", None) else v
+        for k in ("url", "website"):
+            u = j.get(k)
+            if isinstance(u, str) and u.startswith("http"):
+                mt[f"{CL[k]}{r}"].hyperlink = u
+                mt[f"{CL[k]}{r}"].font = f(color="0563C1")
     else:
         mt[f"A{r}"] = f'=IF($C{r}="","","JOB-"&TEXT(ROW()-{M0-1},"0000"))'
     c = CL
@@ -938,7 +946,8 @@ for i in range(len(jobs)):
     r = 5 + i; mr = M0 + i
     for c, k in zip("ABCDEFHIJ", ["id", "company", "title", "source", "url", "verified", "conf", "lstatus", "active"]):
         rs[f"{c}{r}"] = f"={MT}{CL[k]}{mr}&\"\"" if k not in ("verified",) else f"={MT}{CL[k]}{mr}"
-    rs[f"G{r}"] = JD_.V_IDX
+    rs[f"G{r}"] = (f'=IF(ISNUMBER(SEARCH("API",D{r})),"Fetched automatically from the source API by the hourly pipeline",'
+                   f'"Search-indexed listing captured during manual research - open link to verify")')
     rs[f"F{r}"].number_format = "dd-mmm-yyyy"
     for c in range(1, 11): rs.cell(r, c).font = f(size=9); rs.cell(r, c).border = BOX
 RS1 = 4 + len(jobs)
@@ -1078,6 +1087,12 @@ GUIDE = [
  ("Sorting", "Filter freely. Before sorting the master table, copy the Job ID column and Paste Values, so auto IDs do not change and interview/follow-up links stay intact."),
  ("Beyond 600 rows", "Select the last table row and drag the table's resize handle down; formulas extend with it."),
  ("PivotTables & slicers", "Not included: the file was generated programmatically and validated in LibreOffice, which cannot author them. Every metric uses live formulas instead. To add slicers in Excel: click inside tblJobs -> Table Design -> Insert Slicer (Category, Company, Location Group, Status)."),
+ ("AUTOMATIC HOURLY REFRESH", None),
+ ("What it does", "A GitHub Actions workflow (.github/workflows/job-tracker-refresh.yml) runs every hour: it pulls new postings from public job APIs (company ATS boards + remote/aggregator APIs), filters them to your P1-P5 roles, experience and locations, scores them with the same Match % logic, adds only the most suitable ones, updates Listing Status / Date Verified for API jobs, and commits the rebuilt workbook."),
+ ("Your edits are kept", "Everything you type is preserved: all Master Job Tracker inputs (status, dates, notes, even corrected job details), interviews, follow-ups, daily log, JD analysis, profile ratings and search settings. For API-sourced jobs the bot only changes Listing Status and Date Verified - and stops touching Listing Status once you set it yourself."),
+ ("Deleting a job", "Delete the row (or clear its Job Title). The pipeline remembers it and will not add it again."),
+ ("Editing workflow", "Pull the latest file, edit, commit and push. If the bot commits while you are editing, pull again before pushing (Excel files cannot be merged)."),
+ ("Pipeline Runs sheet", "Log of each refresh that changed something: sources OK/failed, jobs fetched, added, closed."),
  ("DATA QUALITY", None),
  ("Confidence", "High = verified on official careers page | Medium = official domain / reputable platform via search index | Low = aggregator / not independently verified. No row is High yet - see Research Summary > Limitations."),
  ("Unknowns", "Salary, visa, relocation and experience are never guessed: 'Unknown' / 'Not disclosed' unless the source stated them."),
@@ -1093,10 +1108,43 @@ for k, v in GUIDE:
     r += 1
 rd.column_dimensions["A"].width = 34; rd.column_dimensions["B"].width = 120
 
+# =====================================================================================  PIPELINE RUNS
+pr = sheet("Pipeline Runs")
+title(pr, "Pipeline Runs", "Log of automatic refreshes that changed something (new jobs, closures). Written by the GitHub Actions workflow.")
+PRH = ["Run (UTC)", "Sources OK", "Sources Failed", "Jobs Fetched", "Relevant After Filters", "New Jobs Added",
+       "Marked Possibly Closed", "Marked Closed", "Archived", "New Job IDs", "Failed Sources"]
+header(pr, 4, PRH)
+runs = json.load(open(ARGS.runs, encoding="utf-8")) if ARGS.runs else []
+for i, run in enumerate(reversed(runs[-300:])):
+    r = 5 + i
+    vals = [run.get("ts"), run.get("sources_ok"), run.get("sources_failed"), run.get("fetched"), run.get("relevant"),
+            run.get("added"), run.get("possibly_closed"), run.get("closed"), run.get("archived"),
+            ", ".join(run.get("new_ids", [])[:40]), ", ".join(run.get("failed", [])[:20])]
+    for c, v in enumerate(vals, 1):
+        cc = pr.cell(r, c, v); cc.font = f(size=9); cc.border = BOX; cc.alignment = Alignment(vertical="top", wrap_text=c >= 10)
+if not runs:
+    pr["A5"] = "No automatic runs yet. The GitHub Actions workflow fills this in."; pr["A5"].font = f(False, 9, "808080", True)
+for c, w in zip("ABCDEFGHIJK", [18, 10, 10, 10, 12, 10, 12, 10, 9, 50, 40]): pr.column_dimensions[c].width = w
+pr.freeze_panes = "A5"; pr.row_dimensions[4].height = 32
+
+# =====================================================================================  RESTORE USER-ENTERED CELLS
+# The pipeline captures every non-formula cell you typed on the input sheets and passes them back here,
+# so a rebuild never loses your interviews, follow-ups, daily log, profile ratings or search settings.
+if ARGS.state:
+    st = json.load(open(ARGS.state, encoding="utf-8"))
+    for sname, cells in st.get("cells", {}).items():
+        if sname not in wb.sheetnames:
+            continue
+        ws_ = wb[sname]
+        for coord, (kind, val) in cells.items():
+            if kind == "date":
+                val = dt.datetime.fromisoformat(val)
+            ws_[coord] = val
+
 # =====================================================================================  ORDER & SAVE
 order = ["README", "Dashboard", "Master Job Tracker", "Job Search", "Interview Tracker", "Skills & Requirements Matrix",
          "Company Database", "Application Pipeline", "Daily Job Hunting Log", "Job Description Analysis",
-         "Follow-up & Reminders", "Research Sources", "Research Summary", "My Profile", "Lists"]
+         "Follow-up & Reminders", "Research Sources", "Research Summary", "Pipeline Runs", "My Profile", "Lists"]
 wb._sheets = [wb[n] for n in order]
 wb.active = 0
 for ws in wb.worksheets:

@@ -1,0 +1,129 @@
+# Hourly job-refresh pipeline configuration.
+# Edit this file to add companies or change filters. A board that fails (wrong slug, company moved ATS)
+# is skipped and reported in the run summary - it never breaks the run.
+
+selection:
+  min_match: 0.60            # only add jobs whose Match % (same formula as the workbook) is at least this
+  max_new_per_run: 25        # cap new rows per hourly run (best matches first)
+  max_years_required: 3      # skip postings that ask for more than this many years
+  max_age_days: 21           # skip postings older than this (when the source gives a date)
+  include_unknown_location_remote: false   # true = also add "Remote" jobs whose country restriction is unclear
+
+lifecycle:
+  possibly_closed_after_missing_runs: 3    # ATS boards: job missing from a successful fetch N runs in a row
+  closed_after_missing_runs: 24            # ...and after N runs (~1 day) mark Closed / Expired
+  aggregator_possibly_closed_after_days: 30
+  archive_untouched_closed_after_days: 7   # remove closed API jobs you never acted on (kept in memory, never re-added)
+
+roles:   # first matching group wins; patterns are case-insensitive regexes matched against the job title
+  - priority: P5
+    category: Cybersecurity
+    patterns: ['devsecops', '\bsecurity\b', '\bsoc\b', 'cyber', 'threat', 'vulnerability', 'penetration', 'iam engineer']
+  - priority: P3
+    category: AI Engineering
+    patterns: ['\bai\b', '\bml\b', 'machine learning', '\bllm', 'generative', 'gen ?ai', 'mlops', 'applied scientist', 'nlp', 'deep learning']
+  - priority: P2
+    category: Data Analytics & Data Science
+    patterns: ['data analyst', 'business intelligence', '\bbi\b', 'analytics engineer', 'data engineer', 'data scientist', 'business analyst', 'reporting analyst', 'data analytics']
+  - priority: P1
+    category: Cloud & DevOps
+    patterns: ['devops', '\bsre\b', 'site reliability', 'cloud', 'platform engineer', 'infrastructure', '\bnoc\b', 'network operations',
+               'systems engineer', 'system engineer', 'linux', 'kubernetes', 'technical support engineer', 'support engineer',
+               'technical services engineer', '\btse\b', 'production engineer', 'release engineer', 'build engineer', 'operations engineer']
+  - priority: P4
+    category: Software Development
+    patterns: ['software engineer', 'software developer', '\bsde\b', 'backend', 'back-end', 'back end', 'full ?stack', 'python developer',
+               'node\.?js', 'golang developer', 'member of technical staff', 'application developer', 'api developer', 'developer']
+
+exclude_title_patterns: ['\bsenior\b', '\bsr\.?\b', '\bstaff\b', '\bprincipal\b', '\blead\b', '\bmanager\b', '\bdirector\b', '\bhead\b',
+                         '\barchitect\b', '\bvp\b', 'vice president', 'distinguished', '\biii\b', '\biv\b', 'engineer 3', 'engineer 4',
+                         '\bl[5-9]\b', 'expert', 'sales', 'account executive', 'recruiter', 'marketing', 'designer', 'mechanical', 'electrical',
+                         'hardware', 'embedded firmware', 'ios', 'android', 'qa manager']
+
+locations:
+  india_terms: ['india', 'bengaluru', 'bangalore', 'mumbai', 'pune', 'hyderabad', 'chennai', 'delhi', 'gurugram', 'gurgaon', 'noida',
+                'kolkata', 'ahmedabad', 'kochi', 'coimbatore', 'jaipur', 'trivandrum', 'thiruvananthapuram', 'mohali', 'chandigarh', 'indore',
+                'nagpur', 'vadodara', 'bhubaneswar', 'mysuru', 'mysore', 'visakhapatnam']
+  remote_ok_terms: ['worldwide', 'anywhere', 'global', 'apac', 'asia', 'india', 'emea', 'international', 'remote - any', 'no restriction']
+  relocation_countries:
+    Germany: ['germany', 'berlin', 'munich', 'münchen', 'hamburg', 'frankfurt', 'cologne', 'köln', 'stuttgart', 'düsseldorf', 'leipzig', 'dresden']
+    UAE: ['united arab emirates', 'uae', 'dubai', 'abu dhabi', 'sharjah']
+    Netherlands: ['netherlands', 'amsterdam', 'rotterdam', 'utrecht', 'eindhoven', 'the hague']
+    Ireland: ['ireland', 'dublin', 'cork', 'galway']
+    United Kingdom: ['united kingdom', 'london', 'manchester', 'edinburgh', 'cambridge', 'bristol', 'england', 'scotland']
+    Singapore: ['singapore']
+
+# ---------------------------------------------------------------------------------------- SOURCES
+# Company ATS boards = the employer's own careers backend -> Data Confidence "High".
+# Slugs must match the company's board URL (e.g. boards.greenhouse.io/<slug>, jobs.lever.co/<slug>, jobs.ashbyhq.com/<slug>).
+sources:
+  greenhouse:
+    cloudflare: Cloudflare
+    datadog: Datadog
+    mongodb: MongoDB
+    databricks: Databricks
+    grafanalabs: Grafana Labs
+    gitlab: GitLab
+    elastic: Elastic
+    postman: Postman
+    phonepe: PhonePe
+    groww: Groww
+    zscaler: Zscaler
+    okta: Okta
+    twilio: Twilio
+    confluent: Confluent
+    hashicorp: HashiCorp
+    rubrik: Rubrik
+    samsara: Samsara
+    vultr: Vultr
+    canonicaljobs: Canonical
+    stripe: Stripe
+    airbnb: Airbnb
+    coinbase: Coinbase
+    gojek: Gojek
+    sumologic: Sumo Logic
+    newrelic: New Relic
+  lever:
+    mindtickle: Mindtickle
+    cred: CRED
+    meesho: Meesho
+    paytm: Paytm
+    zeta: Zeta
+    upstox: Upstox
+    spotify: Spotify
+    palantir: Palantir
+  ashby:
+    sarvam: Sarvam AI
+    supabase: Supabase
+    deel: Deel
+    posthog: PostHog
+    linear: Linear
+    replit: Replit
+    together-ai: Together AI
+  smartrecruiters:
+    BoschGroup: Bosch
+    Visa: Visa
+    ServiceNow: ServiceNow
+  workday:   # host | tenant | site  (public careers JSON used by the careers site itself)
+    - {company: NVIDIA, host: nvidia.wd5.myworkdayjobs.com, tenant: nvidia, site: NVIDIAExternalCareerSite}
+    - {company: Red Hat, host: redhat.wd5.myworkdayjobs.com, tenant: redhat, site: jobs}
+    - {company: Salesforce, host: salesforce.wd12.myworkdayjobs.com, tenant: salesforce, site: External_Career_Site}
+  amazon:
+    enabled: true
+    queries: ['cloud support associate', 'devops engineer', 'site reliability engineer', 'software development engineer', 'business intelligence engineer', 'data engineer', 'security engineer']
+    locations: ['India']
+  # Aggregator / remote APIs -> Data Confidence "Medium"
+  remotive: {enabled: true, categories: ['devops', 'software-dev', 'data', 'ai-ml']}
+  remoteok: {enabled: true}
+  himalayas: {enabled: true, pages: 3}
+  jobicy: {enabled: true, tags: ['devops', 'python', 'data', 'cloud', 'security']}
+  arbeitnow: {enabled: true, pages: 3}
+  # Keyed APIs - enabled automatically when the GitHub secrets exist (free keys):
+  #   ADZUNA_APP_ID + ADZUNA_APP_KEY  (developer.adzuna.com)  - broad India/UK/DE/NL/SG coverage
+  #   JOOBLE_API_KEY                  (jooble.org/api/about)   - broad India coverage
+  adzuna:
+    countries: ['in', 'gb', 'de', 'nl', 'sg']
+    queries: ['devops', 'site reliability engineer', 'cloud engineer', 'data analyst', 'machine learning engineer', 'software engineer', 'security analyst']
+  jooble:
+    queries: ['junior devops engineer', 'cloud engineer fresher', 'site reliability engineer', 'data analyst fresher', 'ai engineer', 'software engineer fresher', 'soc analyst']
+    location: India

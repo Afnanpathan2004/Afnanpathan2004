@@ -1,0 +1,88 @@
+name: Job Tracker - Hourly Refresh
+
+# Every hour: pull new postings from public job APIs, keep only the most suitable ones for the profile in
+# job-hunt-tracker/Global_Job_Hunt_Tracker.xlsx, merge them into the workbook (your edits are preserved),
+# and commit the result. Nothing is committed when nothing changed.
+on:
+  schedule:
+    - cron: "17 * * * *"          # every hour at :17 UTC (off the top of the hour, when GitHub queues are busiest)
+  workflow_dispatch:
+    inputs:
+      recalc:
+        description: "Recalculate formulas with LibreOffice so viewers show values (Excel recalculates on open anyway)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: job-tracker-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: job-hunt-tracker
+    env:
+      # Optional free API keys (Settings -> Secrets and variables -> Actions). Sources are skipped when unset.
+      ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+      ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+      JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: job-hunt-tracker/pipeline/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r pipeline/requirements.txt
+
+      - name: Fetch, filter, score and merge
+        id: refresh
+        run: python pipeline/refresh.py
+
+      - name: Install LibreOffice (only when the workbook changed)
+        id: lo
+        if: steps.refresh.outputs.changed == 'true' && (github.event_name == 'schedule' || inputs.recalc)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends libreoffice-calc >/dev/null
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+
+      - name: Recalculate formulas
+        if: steps.lo.outputs.ok == 'true'
+        continue-on-error: true      # Excel recalculates on open, so a recalc hiccup must not block the update
+        run: python pipeline/recalc.py Global_Job_Hunt_Tracker.xlsx
+
+      - name: Commit and push
+        env:
+          ADDED: ${{ steps.refresh.outputs.added || 0 }}
+          RECALC_OK: ${{ steps.lo.outputs.ok }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          commit() {
+            git add Global_Job_Hunt_Tracker.xlsx data/jobs_db.json
+            if git diff --cached --quiet; then echo "Nothing to commit"; return 1; fi
+            git commit -q -m "chore(jobs): hourly refresh - $1 new job(s) [skip ci]"
+          }
+          commit "$ADDED" || exit 0
+          for attempt in 1 2 3; do
+            if git push -q; then echo "Pushed"; exit 0; fi
+            echo "Push rejected (the branch moved, e.g. you pushed edits). Rebuilding on top of the latest commit (attempt $attempt)."
+            git fetch -q origin "$GITHUB_REF_NAME"
+            git reset -q --hard "origin/$GITHUB_REF_NAME"
+            python pipeline/refresh.py > /dev/null
+            if [ "$RECALC_OK" = "true" ]; then python pipeline/recalc.py Global_Job_Hunt_Tracker.xlsx || true; fi
+            commit "$ADDED" || exit 0
+          done
+          echo "::error::Could not push after 3 attempts"
+          exit 1

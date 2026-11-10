@@ -1,0 +1,596 @@
+{
+ "jobs": {
+  "JOB-0001": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0002": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0003": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0004": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0005": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0006": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0007": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0008": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0009": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0010": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0011": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0012": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0013": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0014": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0015": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0016": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0017": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0018": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0019": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0020": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0021": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0022": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0023": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0024": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0025": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0026": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0027": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0028": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0029": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0030": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0031": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0032": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0033": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0034": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0035": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0036": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0037": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0038": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0039": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0040": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0041": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0042": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0043": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0044": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0045": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0046": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0047": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0048": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0049": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0050": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0051": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0052": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0053": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0054": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0055": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0056": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0057": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0058": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0059": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0060": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0061": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0062": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0063": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0064": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0065": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0066": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0067": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0068": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0069": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0070": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0071": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0072": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0073": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0074": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0075": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0076": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0077": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0078": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0079": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0080": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0081": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0082": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0083": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  },
+  "JOB-0084": {
+   "first_seen": "2026-11-10",
+   "origin": "manual",
+   "removed": false
+  }
+ },
+ "keys": {
+  "t:abb|jr data scientist|bengaluru": "JOB-0048",
+  "t:accenture|junior devops engineer entry level|hyderabad": "JOB-0017",
+  "t:alchemyst ai|junior devops engineer|remote everywhere": "JOB-0016",
+  "t:alp computational finance ai data engineering|junior data engineer|bengaluru": "JOB-0047",
+  "t:alten|it system engineer cloud infrastructure devops|munich": "JOB-0031",
+  "t:alvaria|soc analyst i|bengaluru": "JOB-0080",
+  "t:amazon web services aws|cloud support associate|hyderabad bengaluru varies by req": "JOB-0001",
+  "t:amazon|business intelligence engineer i amazon wholesale|bengaluru": "JOB-0043",
+  "t:amazon|business intelligence engineer i finops|bengaluru": "JOB-0044",
+  "t:amazon|software dev engineer i university talent acquisition|bengaluru hyderabad chennai": "JOB-0063",
+  "t:amgen|associate investment analytics|hyderabad": "JOB-0046",
+  "t:caliberly|junior devops engineer|dubai": "JOB-0032",
+  "t:canonical|junior cloud field engineer|home based middle east": "JOB-0033",
+  "t:cbts india|associate engineer i noc|chennai": "JOB-0007",
+  "t:checkmarx|junior devsecops engineer|pune": "JOB-0076",
+  "t:cisco|software engineer cloud devops|bengaluru verify": "JOB-0027",
+  "t:cisco|software engineer network embedded application development new grad india uhr|bengaluru": "JOB-0059",
+  "t:cisco|software engineer trainee technical graduate apprentice india uhr|bengaluru": "JOB-0060",
+  "t:cloudflare|product security engineer|bengaluru": "JOB-0082",
+  "t:cloudflare|software engineer ai|bengaluru": "JOB-0053",
+  "t:cme group|site reliability engineer i india|bengaluru bagmane tridib": "JOB-0003",
+  "t:conexus tech labs|junior backend developer node js react js python|new delhi": "JOB-0066",
+  "t:credera|monitoring noc associate engineer|hyderabad": "JOB-0006",
+  "t:cuculus|junior python developer|germany verify city": "JOB-0075",
+  "t:datadog|technical support engineer 1|bengaluru": "JOB-0024",
+  "t:deloitte|consultant cloud devops engineering|bengaluru": "JOB-0018",
+  "t:ecolibrium|junior platform engineer|bengaluru": "JOB-0009",
+  "t:everphone|working student devops w m d|berlin": "JOB-0041",
+  "t:evnek technologies|generative ai engineer|bengaluru": "JOB-0050",
+  "t:ey gds|cyber architecture aws cloud security devsecops staff|india ey gds": "JOB-0081",
+  "t:eyne tech services|soc intern|india verify": "JOB-0083",
+  "t:gdi|junior systems and cloud management engineer|remote worldwide": "JOB-0035",
+  "t:hcltech|platform engineer i|bengaluru": "JOB-0011",
+  "t:heaptrace technology|devops engineer associate|pune": "JOB-0013",
+  "t:hometogo|junior cloud engineer m f d|berlin": "JOB-0029",
+  "t:ibm|associate system engineer|india ibm consulting cics": "JOB-0070",
+  "t:inspired infotech|associate cloud engineer fresher aws azure|hyderabad": "JOB-0005",
+  "t:ltimindtree|ai ml engineer fresher|pune": "JOB-0058",
+  "t:mavenir|graduate engineer operations noc l1|bengaluru": "JOB-0008",
+  "t:microsoft|software engineer 2|bengaluru noida hyderabad": "JOB-0064",
+  "t:microsoft|technical support engineering azure|bengaluru": "JOB-0025",
+  "t:miratech|junior devops engineer|remote worldwide arc says restrictions apply": "JOB-0034",
+  "t:mongodb|associate tse i cloud technical services engineer|bengaluru": "JOB-0022",
+  "t:mongodb|associate tse i|gurugram": "JOB-0023",
+  "t:multi recruit client undisclosed|associate data scientist|bengaluru": "JOB-0049",
+  "t:narrative yc w23|backend ai engineer|remote india": "JOB-0054",
+  "t:neoris|junior cloud operations sre engineer|remote spain only": "JOB-0036",
+  "t:netomi|devops engineer i|india remote": "JOB-0015",
+  "t:nutanix|associate devops cloud engineer|pune": "JOB-0002",
+  "t:nutanix|member of technical staff 1|pune": "JOB-0069",
+  "t:nutanix|services automation engineer|pune": "JOB-0021",
+  "t:oracle|software developer 1|bengaluru hyderabad": "JOB-0061",
+  "t:orange health labs|software engineer i devsecops|bengaluru": "JOB-0078",
+  "t:par technology|site reliability engineer i|gurugram jaipur": "JOB-0004",
+  "t:persistent systems|java developer freshers|pune": "JOB-0068",
+  "t:planso|junior backend developer|unknown check listing": "JOB-0065",
+  "t:power reply|junior devops machine learning engineer|berlin munich": "JOB-0042",
+  "t:quantiphi|platform engineer junior senior|bengaluru": "JOB-0012",
+  "t:qubrid ai|ai inference junior engineer wfh|remote india": "JOB-0056",
+  "t:qubrid ai|junior back end engineer ai wfh|remote india": "JOB-0084",
+  "t:rb designtech|junior ai software engineer ai engineer intern|hyderabad remote india": "JOB-0057",
+  "t:red hat|associate software engineer subscription management|pune": "JOB-0062",
+  "t:reizend|junior devops engineer freshers|thiruvananthapuram": "JOB-0014",
+  "t:saab uk|software engineering graduate sep 2027|united kingdom": "JOB-0072",
+  "t:sap|associate devops engineer sovereign cloud|bengaluru gurugram": "JOB-0019",
+  "t:sap|associate engineer sap basis s 4hana public cloud 1 3y sovereign cloud|bengaluru": "JOB-0020",
+  "t:scale ai|software engineer new grad|london": "JOB-0073",
+  "t:secure network solutions|soc trainee fresher|chennai": "JOB-0079",
+  "t:seven senders|junior devops engineer f m x|berlin": "JOB-0030",
+  "t:simplifynext|cloud developer graduate|singapore": "JOB-0039",
+  "t:singtel|software engineer nucleus graduate programme|singapore": "JOB-0074",
+  "t:softwire|graduate consultant software engineer 2027|london cambridge manchester": "JOB-0071",
+  "t:stackorbit|ai engineer llm rag|kolhapur": "JOB-0051",
+  "t:swisscom|devops engineer|rotterdam": "JOB-0038",
+  "t:together ai|junior senior staff software engineer inference compute infrastructure|remote india": "JOB-0055",
+  "t:tredence|generative ai llm rag engineer fresher|bengaluru": "JOB-0052",
+  "t:unknown see listing|data analyst entry level|pune": "JOB-0045",
+  "t:unknown see listing|graduate cloud infrastructure engineer fresh graduates welcome|singapore": "JOB-0040",
+  "t:vultr|junior devops engineer|remote country not stated": "JOB-0037",
+  "t:wipro|platform engineer l1|pune": "JOB-0010",
+  "t:world wide technology|level 2 azure support engineer|mumbai gurugram pune bengaluru hyderabad": "JOB-0026",
+  "t:zoho|software developer off campus 2026|chennai salem coimbatore tirunelveli madurai": "JOB-0067",
+  "t:zoho|technical support engineer|chennai": "JOB-0028",
+  "t:zscaler|software development engineer devsecops|bengaluru": "JOB-0077",
+  "u:https://amazon.jobs/en/jobs/2866105/cloud-support-associate": "JOB-0001",
+  "u:https://arbeitnow.com/jobs/companies/everphone-gmbh/working-student-devops-berlin-440242": "JOB-0041",
+  "u:https://ats.rippling.com/cbtsindia/jobs/863bd6a1-96f0-49de-a6a2-f42164fdc3a0": "JOB-0007",
+  "u:https://bayt.com/en/uae/jobs/junior-devops-engineer-74731805": "JOB-0032",
+  "u:https://boards.greenhouse.io/canonicaljobs/jobs/6792944": "JOB-0033",
+  "u:https://builtin.com/job/associate-software-engineer/8371443": "JOB-0062",
+  "u:https://builtin.com/job/associate-tse-i/9680104": "JOB-0022",
+  "u:https://builtin.com/job/data-analyst/4585323": "JOB-0045",
+  "u:https://builtin.com/job/site-reliability-engineer-i-india/7826214": "JOB-0003",
+  "u:https://builtinbengaluru.in/job/software-development-engineer-devsecops/10039721": "JOB-0077",
+  "u:https://careers.hcltech.com/job/Platform-Engineer-I/1358533355": "JOB-0011",
+  "u:https://careers.wipro.com/job/Platform-Engineer-L1/182562-en_US": "JOB-0010",
+  "u:https://checkmarx.com/job-openings/position/AA.B6D": "JOB-0076",
+  "u:https://cloudsoftsol.com/blog/tredence-generative-ai-llm-rag-engineer-fresher-bangalore-2026": "JOB-0052",
+  "u:https://cloudsoftsol.com/jobs/ltimindtree-ai-ml-engineer-fresher-pune-2026": "JOB-0058",
+  "u:https://employbl.com/jobs/platform-engineer-Quantiphi-1728117": "JOB-0012",
+  "u:https://employmenthero.com/jobs/position/ecolibrium-junior-platform-engineer-v4wkm": "JOB-0009",
+  "u:https://en.devjobs.de/job/6351c2d3d95a2948603f85dd8bb041de": "JOB-0042",
+  "u:https://flexa.careers/jobs/sap-associate-devops-engineer-jenkins-concourse-landscaper-blr-ggn-sovereign-cloud-690c17ab537f80f281f078f8": "JOB-0019",
+  "u:https://freehire.me/jobs/ai-engineer-llm-rag-india-stackorbit-p5xmorrh": "JOB-0051",
+  "u:https://fresheroffcampus.com/zoho-off-campus": "JOB-0067",
+  "u:https://freshershunt.in/amazon-sde-1-2026": "JOB-0063",
+  "u:https://freshershunt.in/mavenir-off-campus-drive-2026": "JOB-0008",
+  "u:https://glassdoor.co.in/Job/india-entry-level-data-scientist-jobs-SRCH_IL.0,5_IN115_KO6,32.htm": "JOB-0046",
+  "u:https://glassdoor.co.in/Job/india-soc-analyst-jobs-SRCH_IL.0,5_IN115_KO6,17.htm": "JOB-0083",
+  "u:https://grabjobs.co/singapore/job/full-time/engineering-and-technicians/graduate-cloud-infrastructure-engineer-fresh-graduates-welcome-159745120": "JOB-0040",
+  "u:https://groupcareers.singtel.com/job/Software-Engineer-(Nucleus-Graduate-Programme)-Sing/1059572966": "JOB-0074",
+  "u:https://huntukvisasponsors.com/job/software-engineering-graduate-at-saab-uk-gmsz-jc7vlj5": "JOB-0072",
+  "u:https://in.indeed.com/q-devops-engineer-roles-with-0-2-years-jobs.html": "JOB-0002",
+  "u:https://in.indeed.com/q-devops-fresher-jobs.html": "JOB-0014",
+  "u:https://in.indeed.com/q-fresher-soc-analyst-l-tamil-nadu-jobs.html": "JOB-0079",
+  "u:https://in.indeed.com/q-soc-analyst-fresher-entry-level-junior-trainee-jobs.html": "JOB-0080",
+  "u:https://in.linkedin.com/jobs/data-scientist-fresher-jobs": "JOB-0049",
+  "u:https://indexventures.com/startup-jobs/datadog/technical-support-engineer-1-19": "JOB-0024",
+  "u:https://inspiredinfotech.com/jobs/associate-cloud-engineer-fresher-hyderabad.html": "JOB-0005",
+  "u:https://job-boards.greenhouse.io/simplifynext/jobs/5026261007": "JOB-0039",
+  "u:https://job-boards.greenhouse.io/vultr/jobs/4619147006": "JOB-0037",
+  "u:https://job4freshers.co.in/category/data-science": "JOB-0048",
+  "u:https://jobfound.org/job/alp-computational-finance-ai-and-data-engineering-is-hiring-for-junior-data-engineer-bengaluru-karnataka-india-india-31-october-2026": "JOB-0047",
+  "u:https://jobfound.org/job/evnek-technologies-pvt-ltd-is-hiring-for-generative-ai-engineer-bangalore-india-4-november-2026": "JOB-0050",
+  "u:https://jobfound.org/job/par-technology-is-hiring-for-site-reliability-engineer-i-gurugram-haryana-india-india-17-october-2026": "JOB-0004",
+  "u:https://jobmetasearch.ai/visa-sponsorship/devops-engineer": "JOB-0031",
+  "u:https://jobs.anitab.org/companies/amazon-3-60ad394d-c673-4474-9694-344b0cae748f/jobs/69998699-business-intel-engineer-i-finops": "JOB-0044",
+  "u:https://jobs.anitab.org/companies/amazon-3-60ad394d-c673-4474-9694-344b0cae748f/jobs/89086924-business-intelligence-engineer-amazon-wholesale": "JOB-0043",
+  "u:https://jobs.anitab.org/companies/ey-2/jobs/83301418-tc-cs-cyber-architecture-ot-and-engineering-aws-cloud-security-and-devsecops-staff": "JOB-0081",
+  "u:https://jobs.anitab.org/companies/microsoft-2/jobs/91196366-software-engineer-2": "JOB-0064",
+  "u:https://jobs.anitab.org/companies/microsoft/jobs/64856723-technical-support-engineering": "JOB-0025",
+  "u:https://jobs.anitab.org/companies/nutanix/jobs/72590945-member-of-technical-staff-1": "JOB-0069",
+  "u:https://jobs.anitab.org/companies/oracle-2-2edaf908-7a2f-4ec2-a440-aed90715dc36/jobs/64065943-software-developer-1": "JOB-0061",
+  "u:https://jobs.b2venture.vc/companies/seven-senders/jobs/91962263-junior-devops-engineer-f-m-x": "JOB-0030",
+  "u:https://jobs.cisco.com/jobs/ProjectDetail/Software-Engineer-Test-Full-Time-India-Engineering-UHR/1403775": "JOB-0059",
+  "u:https://jobs.generalcatalyst.com/companies/orange-health-labs/jobs/96906598-software-engineer-i-devsecops": "JOB-0078",
+  "u:https://jobs.generalcatalyst.com/companies/together-ai-2/jobs/90599711-junior-senior-or-staff-software-engineer-inference-compute-infrastructure-engineering": "JOB-0055",
+  "u:https://jobs.jobvite.com/nutanix/job/oAKUyfww": "JOB-0021",
+  "u:https://jobs.joindevops.com/jobs/508124412-software-engineer-cloud-devops-|-cisco-hiring-2026": "JOB-0027",
+  "u:https://jobs.sap.com/job/Bangalore-Associate-Engineer-SAP-Basis%2C-S4HANA%2C-Public-Cloud-%28Ex-1-3Y%29-Sovereign-Cloud-560066/1266787101": "JOB-0020",
+  "u:https://jobs.weekday.works/cisco-software-engineer-trainee_technical-graduate-apprentice---india-uhr": "JOB-0060",
+  "u:https://jobs.weekday.works/junior-ai-software-engineers-ai-engineer-interns-at-rb-design-tech-wkdy0gz7sd": "JOB-0057",
+  "u:https://jobs.weekday.works/junior-backend-developer-node-js-react-js-python-at-conexus-tech-labs-4382261578": "JOB-0066",
+  "u:https://jobsbyculture.com/jobs/cloudflare/product-security-engineer": "JOB-0082",
+  "u:https://joinsaarthi.com/jobs/world-wide-technology/level-2-azure-support-engineer-mumbai/c5ee1b04-7a24-453a-81fc-cdcdeae4e8de": "JOB-0026",
+  "u:https://justforcareer.pages.dev/jobs/ibm-associate-system-engineer": "JOB-0070",
+  "u:https://offcampusjobs4u.com/credera-recruitment-2026-noc-associate-engineer-hyderabad": "JOB-0006",
+  "u:https://offcampusready.blogspot.com/2026/03/persistent-systems-recruitment-2026-java-developer-freshers.html": "JOB-0068",
+  "u:https://relocate.me/the-netherlands/rotterdam/swisscom/devops-engineer-9731": "JOB-0038",
+  "u:https://remoterocketship.com/country/india/jobs/junior-devops": "JOB-0015",
+  "u:https://remotive.com/remote/jobs/devops/junior-cloud-operations-sre-engineer-4926793": "JOB-0036",
+  "u:https://remotive.com/remote/jobs/devops/junior-devops-engineer-4202261": "JOB-0034",
+  "u:https://remotive.com/remote/jobs/devops/junior-systems-and-cloud-management-engineer-4308081": "JOB-0035",
+  "u:https://resumegeni.com/jobs/software-engineer-ai-cloudflare-d262d81d88": "JOB-0053",
+  "u:https://softwire.com/careers/open-roles/graduate-consultant-software-engineer-2027": "JOB-0071",
+  "u:https://southasiacareers.deloitte.com/job/Bengaluru-Consultant-Cloud-DevOps-Bengaluru-Engineering/53378244": "JOB-0018",
+  "u:https://startupjobs.htgf.de/companies/cuculus/jobs/91451201-junior-python-developer": "JOB-0075",
+  "u:https://swooped.co/job-postings/associate-tse-i-gurugram-mongodb-2bcb4": "JOB-0023",
+  "u:https://tarve.co.uk/jobs/software-engineer-new-grad-scale-ai-12007135": "JOB-0073",
+  "u:https://testingsociety.com?p=14900": "JOB-0028",
+  "u:https://tryapplynow.com/jobs/accenture-junior-devops-engineer-entry-level-c92420ba-d47f-4f91-afaa-aeb77ea72f5a": "JOB-0017",
+  "u:https://wellfound.com/jobs/4717817-junior-backend-developer": "JOB-0065",
+  "u:https://wellfound.com/role/r/devops-engineer": "JOB-0016",
+  "u:https://workatastartup.com/jobs/79469": "JOB-0054",
+  "u:https://ziprecruiter.de/jobs/551879121-junior-cloud-engineer-m-f-d-bei-hometogo": "JOB-0029",
+  "u:https://ziprecruiter.in/jobs/544801178-junior-back-end-engineer-ai-wfh-at-qubrid-ai": "JOB-0084",
+  "u:https://ziprecruiter.in/jobs/546239181-ai-inference-junior-engineer-wfh-at-qubrid-ai": "JOB-0056"
+ },
+ "max_id": 84,
+ "runs": [],
+ "schema_version": 2
+}
